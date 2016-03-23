@@ -12,7 +12,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   yahoo_ma_service:
-    github: sh4869/yahoo_ma_service
+    github: sh4869/yahoo_ma_service.cr
 ```
 
 
