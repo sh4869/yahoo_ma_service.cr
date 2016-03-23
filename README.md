@@ -4,6 +4,8 @@ Yahoo Japanese Morphological analysis Service API Wrapper for Crystal.
 
 [テキスト解析:日本語形態素解析 - Yahoo!デベロッパーネットワーク](http://developer.yahoo.co.jp/webapi/jlp/ma/v1/parse.html)
 
+[![travis-build-status](https://travis-ci.org/sh4869/yahoo_ma_service.cr.svg?branch=master)](https://travis-ci.org/sh4869/yahoo_ma_service.cr) [![doccrystal.org](http://docrystal.org/badge.svg?style=round)](http://docrystal.org/github.com/sh4869/yahoo_ma_service.cr)
+
 ## Installation
 
 
