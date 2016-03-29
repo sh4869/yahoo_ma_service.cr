@@ -10,7 +10,7 @@ module YahooMAService
     def parse(sentence : String) : MAResult
       response = HTTP::Client.post_form(URI.parse("http://jlp.yahooapis.jp/MAService/V1/parse"),
         {"appid" => @id, "sentence" => sentence, "results" => "ma"})
-      doc = XML.parse(response)
+			doc = XML.parse(response.body)
       ma_result_node = doc.children.find { |node| node.name == "ResultSet" }.not_nil!.children.find { |node| node.name == "ma_result" }.not_nil!
       return MAResult.from_xml_node(ma_result_node).not_nil!
     end
