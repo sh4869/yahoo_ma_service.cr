@@ -16,7 +16,7 @@ module YahooMAService
         reading = node.children.find { |node| node.name == "reading" }.not_nil!.content.not_nil!
         count = node.children.find { |node| node.name == "count" }.not_nil!.content.not_nil!
         begin
-          baseform_node = node.children.find { |node| node.name == "baseform" }.not_nil
+          baseform_node = node.children.find { |node| node.name == "baseform" }.not_nil!
         rescue
           baseform = ""
         else
@@ -29,7 +29,7 @@ module YahooMAService
         else
           feature = feature_node.content.not_nil!
         end
-				return self.new(surface, reading, pos, baseform.not_nil!, feature.not_nil!,content.to_i.not_nil!)
+        return self.new(surface, reading, pos, baseform.not_nil!, feature.not_nil!, count.to_i.not_nil!)
       end
     end
   end

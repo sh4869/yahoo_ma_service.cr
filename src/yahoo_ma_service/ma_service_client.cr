@@ -1,4 +1,4 @@
-require "./ma_result.cr"
+require "./result_set"
 require "http/client"
 require "uri"
 require "xml"
@@ -7,12 +7,12 @@ module YahooMAService
   class MAServiceClient
     def initialize(@id : String); end
 
-    def parse(sentence : String) : MAResult
+    def parse(sentence : String) : ResultSet
       response = HTTP::Client.post_form(URI.parse("http://jlp.yahooapis.jp/MAService/V1/parse"),
-        {"appid" => @id, "sentence" => sentence, "results" => "ma"})
-			doc = XML.parse(response.not_nil!.body.not_nil!).not_nil!
-			ma_result_node = doc.children.not_nil!.find { |node| node.name == "ResultSet" }.not_nil!.children.not_nil!.find { |node| node.name == "ma_result" }.not_nil!
-      return MAResult.from_xml_node(ma_result_node).not_nil!
+        {"appid" => @id, "sentence" => sentence, "results" => "ma,uniq"})
+      doc = XML.parse(response.not_nil!.body.not_nil!).not_nil!
+      result_set_node = doc.children.not_nil!.find { |node| node.name == "ResultSet" }.not_nil!
+      return ResultSet.from_xml_node(result_set_node).not_nil!
     end
   end
 end
